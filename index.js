@@ -9,7 +9,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("hello server");
 });
-
+// this is user post function
 app.post("/user-api", async (req, resp) => {
   let data = await user(req.body);
   data = await data.save();
@@ -22,6 +22,7 @@ app.post("/user-api", async (req, resp) => {
   }
 });
 
+// this is use get function
 app.get("/user-api", async (req, resp) => {
   let data = await user.find();
   if (data) {
@@ -29,10 +30,13 @@ app.get("/user-api", async (req, resp) => {
   } else resp.status(500).send("Data not found");
 });
 
+// this is user delete function
 app.delete("/user-api/:_id", async (req, resp) => {
   let data = await user.deleteOne({ _id: req.params._id });
+  resp.send(data)
 });
 
+// this is update function 
 app.put("/user-api/:_id", async (req, resp) => {
   let data = await user.updateOne(
     { _id: req.params._id },
