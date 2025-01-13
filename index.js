@@ -47,6 +47,7 @@ app.put("/user-api/:_id", async (req, resp) => {
   resp.send(data);
 });
 
+console.log("Helloworld");
 app.listen(PORT, () => {
   console.log(`server is running at port number ${PORT}`);
 });
